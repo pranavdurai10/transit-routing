@@ -5,6 +5,8 @@ Note: You may use may define any additional class, functions if necessary.
 However, DO NOT CHANGE THE TEMPLATE CHANGE THE TEMPLATE OF THE FUNCTIONS PROVIDED.
 """
 
+import pandas as pd
+import os
 
 def Dij_generator():
     """
@@ -16,10 +18,18 @@ def Dij_generator():
     graph_object = None
     try:
         # Enter your code here
+        root = 'D:\\Desktop\\Personal-Projects\\Applications_Resume\\IISc-BLR-Winter-Internship-2022\\transit-routing\python_exam'
+        netfile = os.path.join(root,'ChicagoSketch_net.tntp')
+        net = pd.read_csv(netfile, skiprows=8, sep='\t')
+        trimmed= [s.strip().lower() for s in net.columns]
+        net.columns = trimmed
+        net.drop(['~', ';'], axis=1, inplace=True)
+        print("The target dataframe is: ")
+        print(net.head())
+        graph_object = net 
         return graph_object
     except:
         return graph_object
-
 
 def Q1_dijkstra(source: int, destination: int, graph_object) -> int:
     """
@@ -39,6 +49,10 @@ def Q1_dijkstra(source: int, destination: int, graph_object) -> int:
     shortest_path_distance = -1
     try:
         # Enter your code here
+        print(shortest_path_distance)
+
         return shortest_path_distance
     except:
         return shortest_path_distance
+
+
