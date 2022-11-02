@@ -47,6 +47,7 @@ def Q1_dijkstra(source: int, destination: int, graph_object) -> int:
         If the destination is not reachable, function returns -1
     """
     shortest_path_distance = -1
+    print(shortest_path_distance)
     try:
         # Enter your code here
         print(shortest_path_distance)
